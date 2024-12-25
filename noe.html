@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noel2</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Tangerine">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        body{
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: rgb(12, 173, 12);
+            overflow: hidden;
+            background-size: cover;
+            animation: infinite;
+        }
+
+        @keyframes animation{
+            0%, 100%{
+                background-position: 0% 50%;
+            }
+            50%{
+                background-position: 100% 50%;
+            }
+        }
+
+        .container{
+            width: 20rem;
+            position: relative;
+        }
+
+        .star{
+            width: 4.5rem;
+            height: 4.5rem;
+            background-color: yellow;
+            clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+            position: absolute;
+            left: 52%;
+            top: 0;
+            transform: translate(-30%,-30%);
+            z-index: 12;
+            animation: rotate 4s linear infinite;
+        }
+
+        .snow::after{
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translateX(-50%,-50%);
+            width: 3.5rem;
+            height: 3.5rem;
+            background-color:white;
+            clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+
+        }
+
+        .tree{
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .tree >div{
+            height: 3rem;
+            background-color: rgb(2, 126, 4);
+            clip-path: polygon(0 40%,100% 0,100% 60%,0% 100%);
+            position: relative;
+            z-index: 11;
+            margin-top: -1.6rem;
+        }
+
+        .tree >div:nth-of-type(even){
+            height: 3rem;
+            background-color: rgba(3, 213, 17, 0.817);
+            clip-path: polygon(0 40%,100% 0,100% 60%,0% 100%);
+            position: relative;
+            z-index: 1;
+            margin-top: -1.6rem;
+            transform: rotate(2deg);
+            margin-left: 1rem;
+        }
+
+        .tree >div:nth-of-type(1){
+            width: 3rem;
+            height: 4rem;
+            clip-path: polygon(60% 0,100% 50%,100% 50%,0 100%,0 60%);
+        }
+        .tree >div:nth-of-type(2){
+            width: 5rem;
+        }
+        .tree >div:nth-of-type(3){
+            width: 6rem;
+        }
+        .tree >div:nth-of-type(4){
+            width: 7rem;
+        }
+        .tree >div:nth-of-type(5){
+            width: 8rem;
+        }
+        .tree >div:nth-of-type(6){
+            width: 9rem;
+        }
+        .tree >div:nth-of-type(7){
+            width: 10rem;
+        }
+        .tree >div:nth-of-type(8){
+            width: 11rem;
+        }
+        .tree >div:nth-of-type(9){
+            width: 12rem;
+        }
+        .tree >div:nth-of-type(10){
+            width: 13rem;
+        }
+        .tree >div:nth-of-type(11){
+            width: 14rem;
+        }
+        .tree >div:nth-of-type(12){
+            width: 15rem;
+        }
+        .tree >div:nth-of-type(13){
+            width: 16rem;
+        }
+        .tree >div:nth-of-type(14){
+            width: 17rem;
+        }
+        .tree >div:nth-of-type(15){
+            width: 15rem;
+            height: 2rem;
+            margin-left: 4rem;
+            clip-path: polygon(100% 3%,100% 0,100% 100%,0 100%);
+        }
+
+        .base{
+            width: 5rem;
+            height: 2rem;
+            background-color: yellow;
+            clip-path: polygon(0 0,100% 0,90% 100%,10% 100%);
+            position: relative;
+            left: 52%;
+            bottom: 0;
+            transform: translateX(-50%);
+        }
+
+        .shadow{
+            width: 12rem;
+            height: 2rem;
+            background-color: rgba(28, 28, 28, 0.621);
+            border-radius: 50%;
+            position: relative;
+            filter: blur(6px);
+            left: 52%;
+            bottom: 5px;
+            transform: translateX(-50%);
+        }
+
+        .small-snow{
+            position: absolute;
+            top: 0;
+            left: var(--left);
+            width: 2rem;
+            height: 2rem;
+            background-color: white;
+            clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+            animation: falling-snow 2s var(--delay) linear infinite backwards;
+            z-index: 2;
+        }
+        
+        .small-snow:nth-child(2),
+        .small-snow:nth-child(6),
+        .small-snow:nth-child(8){
+            width: 1rem;
+            height: 1rem;
+            filter: blur(10px);
+        }
+        @keyframes falling-snow{
+            0%{
+                transform: translateY(-10rem);
+            }
+            100%{
+                transform: translate(10vw,100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="tree">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="star"></div>
+        <div class="base"></div>
+        <div class="shadow"></div>
+    </div>
+    <div class="small-snow" style="--left:0%;--delay:1.3s"></div>
+    <div class="small-snow" style="--left:10%;--delay:1.5s"></div>
+    <div class="small-snow" style="--left:20%;--delay:1s"></div>
+    <div class="small-snow" style="--left:30%;--delay:2s"></div>
+    <div class="small-snow" style="--left:40%;--delay:1s"></div>
+    <div class="small-snow" style="--left:20%;--delay:1.3s"></div>
+    <div class="small-snow" style="--left:30%;--delay:1.6s"></div>
+    <div class="small-snow" style="--left:40%;--delay:1s"></div>
+    <div class="small-snow" style="--left:50%;--delay:.7s"></div>
+    <div class="small-snow" style="--left:60%;--delay:.1s"></div>
+    <div class="small-snow" style="--left:70%;--delay:.6s"></div>
+    <div class="small-snow" style="--left:80%;--delay:1.4s"></div>
+    <div class="small-snow" style="--left:90%;--delay:.9s"></div>
+    <div class="small-snow" style="--left:100%;--delay:.1s"></div>
+
+    <div>
+        <h3>Jingle Bells</h3>
+        <p>Dashing through the snow 
+        In a one-horse open sleigh,
+        O'er the fields we go,<br>
+        Laughing all the way.
+        Bells on bobtail ring,<br>
+        Making spirits bright,
+        What fun it is to ride and sing
+        A sleighing song tonight! <br>
+        
+        Jingle bells, jingle bells,
+        Jingle all the way! <br>
+        Oh, what fun it is to ride
+        In a one-horse open sleigh, hey! <br>
+        Jingle bells, jingle bells,
+        Jingle all the way! <br>
+        Oh, what fun it is to ride
+        In a one-horse open sleigh! <br>
+        </p></div>
+</body>
+</html>
